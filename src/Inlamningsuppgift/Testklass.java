@@ -41,4 +41,23 @@ public class Testklass {
 
     }
 
+    @Test
+    public void thirdTestCase(){
+
+        //Arrange
+        Logikklass wordProcessor = new Logikklass();
+        int expected = 8;
+
+        //Act
+        wordProcessor.countCharacters("Hej");
+        wordProcessor.countCharacters("Hejdå");
+        wordProcessor.countCharacters("stop");
+        int actual = wordProcessor.getCharacters();
+
+        //Assert
+        assertEquals(expected, actual);
+
+    }
+
+
 }
