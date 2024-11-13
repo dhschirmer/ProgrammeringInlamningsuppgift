@@ -52,8 +52,9 @@ public class Logikklass {
     //Räknar ord - countWord
     public void countWord (String line) {
         if (isNotStop(line)){
-            String[] words = line.split(" ");
+            String[] words = line.strip().split(" ");
             numberWord = numberWord + words.length;
+
         }
     }
 

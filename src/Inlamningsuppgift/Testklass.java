@@ -58,6 +58,7 @@ public class Testklass {
         assertEquals(expected, actual);
 
     }
+
     @Test
     public void del3firstTestCase(){
         //Arrange
@@ -94,5 +95,24 @@ public class Testklass {
         assertEquals(expected, actual);
 
 }
+
+    @Test
+    public void del3thirdTestCase(){
+
+        //Arrange
+        Logikklass wordProcessor = new Logikklass();
+
+        int expected = 3;
+
+        //Act
+        wordProcessor.countWord("  Hej hej        ");
+        wordProcessor.countWord(" Hejdå       ");
+        wordProcessor.countWord("stop");
+        int actual = wordProcessor.getWord();
+
+        //Assert
+        assertEquals(expected, actual);
+
+    }
 
 }
