@@ -61,6 +61,7 @@ public class Logikklass {
     public int getWord() {
         return numberWord;
     }
+
         //Längsta ordet
     public void checkLongestWord (String line) {
         if (isNotStop(line)) {

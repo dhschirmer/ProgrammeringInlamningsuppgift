@@ -7,7 +7,7 @@ public class Testklass {
 
     //Teste para testar o metodo nas suas duas possibilidades
     @Test
-    public void firstTestCase(){
+    public void del2firstTestCase(){
 
         //Arrange
         Logikklass wordProcessor = new Logikklass();
@@ -23,7 +23,7 @@ public class Testklass {
     }
 //Teste para contar o numero de linhas
     @Test
-    public void secondTestCase(){
+    public void del2secondTestCase(){
 
         //Arrange
         Logikklass wordProcessor = new Logikklass();
@@ -42,7 +42,7 @@ public class Testklass {
     }
 
     @Test
-    public void thirdTestCase(){
+    public void del2thirdTestCase(){
 
         //Arrange
         Logikklass wordProcessor = new Logikklass();
@@ -58,6 +58,41 @@ public class Testklass {
         assertEquals(expected, actual);
 
     }
+    @Test
+    public void del3firstTestCase(){
+        //Arrange
+        Logikklass wordProcessor = new Logikklass();
+        int expected = 2;
 
+        //Act
+        wordProcessor.countWord("Hej");
+        wordProcessor.countWord("Hejdå");
+        wordProcessor.countWord("stop");
+        int actual = wordProcessor.getWord();
+
+        //Assert
+        assertEquals(expected, actual);
+
+    }
+
+    @Test
+    public void del3secondTestCase(){
+
+        //Arrange
+        Logikklass wordProcessor = new Logikklass();
+        String expected = "Godmorgon";
+
+        //Act
+        wordProcessor.checkLongestWord("Hej");
+        wordProcessor.checkLongestWord("Godmorgon");
+        wordProcessor.checkLongestWord("Hejdå");
+        wordProcessor.checkLongestWord("stop");
+
+        String actual = wordProcessor.getLongestWord();
+
+        //Assert
+        assertEquals(expected, actual);
+
+}
 
 }
