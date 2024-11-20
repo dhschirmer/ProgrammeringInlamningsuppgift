@@ -1,70 +1,72 @@
 package Inlamningsuppgift;
 
-public class Logikklass {
+public class TextAnalyser {
 
     //Atributo
     private int numberLines;
     private int numberCharacters;
-    private int numberWord;
+    private int numberWords;
     private String longestWord;
 
     //Konstruktor
-    public Logikklass (){
+    public TextAnalyser() {
         numberLines = 0;
         numberCharacters = 0;
-        numberWord = 0;
+        numberWords = 0;
         longestWord = "";
     }
 
-   //Metod Stop
-    public boolean isNotStop (String text) {
-        if (text.equalsIgnoreCase("stop")){
+    //Metod Stop
+    public boolean isNotStop(String text) {
+        if (text.equalsIgnoreCase("stop")) {
             return false;
         } else {
             return true;
         }
-   }
+    }
 
-//Metod- Räknar raderna - (funcao) - Incrementando linha a linha
+    //Metod- Räknar raderna - (funcao) - Incrementando linha a linha
     public void countLine(String line) {
         if (isNotStop(line)) {
             numberLines = numberLines + 1;
         }
 
     }
+
     public int getLines() {
         return numberLines;
     }
 
     //Räknar tecken - countCharacters
 
-    public void countCharacters (String line) {
-        if (isNotStop(line)){
+    public void countCharacters(String line) {
+        if (isNotStop(line)) {
             numberCharacters = numberCharacters + line.length();
         }
 
     }
+
     //getCharacters
     public int getCharacters() {
         return numberCharacters;
     }
 
     //Räknar ord - countWord
-    public void countWord (String line) {
-        if (isNotStop(line)){
+    public void countWord(String line) {
+        if (isNotStop(line) && !line.isEmpty()) {
             String[] words = line.strip().split(" ");
-            numberWord = numberWord + words.length;
+            numberWords = numberWords + words.length;
 
         }
     }
 
     //getWord
     public int getWord() {
-        return numberWord;
+        return numberWords;
     }
 
-        //Längsta ordet
-    public void checkLongestWord (String line) {
+    //Längsta ordet
+    public void checkLongestWord(String line) {
         if (isNotStop(line)) {
             String[] words = line.split(" ");
 
@@ -72,15 +74,15 @@ public class Logikklass {
             for (int i = 0; i < length; i++) {
 
                 //i eh o indice dentro do Array
-               if (words[i].length() > longestWord.length()) {
-                   longestWord = words[i];
-               }
+                if (words[i].length() > longestWord.length()) {
+                    longestWord = words[i];
+                }
             }
 
         }
     }
 
-//getLongestWord
+    //getLongestWord
     public String getLongestWord() {
         return longestWord;
 

@@ -2,41 +2,41 @@ package Inlamningsuppgift;
 
 import java.util.Scanner;
 
-public class Main {
+public class TextCounter {
     public static void main(String[] args) {
         Scanner scan = new Scanner(System.in);
 
         //Objeto - Instanciando a classe logica
-        Logikklass wordProcessor = new Logikklass();
+        TextAnalyser analyser = new TextAnalyser();
 
         String text = "";
 
-        while (wordProcessor.isNotStop(text)) {
+        while (analyser.isNotStop(text)) {
             System.out.println("Skriv en mening eller skriv 'stop' för att avsluta: ");
             text = scan.nextLine();
 
 
             //Bearbeta linjen
             //Nome do objeto. metodo - escreve e enter
-            wordProcessor.countLine(text);
-            wordProcessor.countCharacters(text);
-            wordProcessor.countWord(text);
-            wordProcessor.checkLongestWord(text);
+            analyser.countLine(text);
+            analyser.countCharacters(text);
+            analyser.countWord(text);
+            analyser.checkLongestWord(text);
 
         }
 
         //Skriver ut hur många rader - Imprimir quantas linhas
-        System.out.println("Antalet rader: " + wordProcessor.getLines());
+        System.out.println("Antalet rader: " + analyser.getLines());
 
         //Skriver ut antal tecken - Imprimir numero de caracteres
-        System.out.println("Antalet tecken: " + wordProcessor.getCharacters());
+        System.out.println("Antalet tecken: " + analyser.getCharacters());
 
 
         //Skriver ut antalet ord - Imprimir numero de palavras
-        System.out.println("Antalet ord: " + wordProcessor.getWord());
+        System.out.println("Antalet ord: " + analyser.getWord());
 
         //Skriver ut länsta ordet - Imprimir palavra mais longa
-        System.out.println("Antalet ord: " + wordProcessor.getLongestWord());
+        System.out.println("Antalet länsta ord: " + analyser.getLongestWord());
     }
 
 
