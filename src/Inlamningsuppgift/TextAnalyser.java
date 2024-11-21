@@ -2,23 +2,23 @@ package Inlamningsuppgift;
 
 public class TextAnalyser {
 
-    //Attribut
+    // Attribut
     private int numberRows;
     private int numberCharacters;
     private int numberWords;
     private String longestWord;
 
-    //Konstruktor
+    // Konstruktor
     public TextAnalyser() {
-        //Inicializa os atributos com valor padrao
+        //Initierar attributen med standardvärden
         numberRows = 0;
         numberCharacters = 0;
         numberWords = 0;
         longestWord = "";
     }
 
-    //Metod Stop - Kontrollera om man har skrivit ordet Stop
-    //Retorna True se o texto nao for stop, retorna falso caso seja Stop
+    // Metod Stop - Kontrollera om man har skrivit ordet "Stop"
+    // Returnerar True om texten inte är Stop, returnerar False om texten är Stop
     public boolean isNotStop(String text) {
         if (text.equalsIgnoreCase("stop")) {
             return false;
@@ -27,46 +27,46 @@ public class TextAnalyser {
         }
     }
 
-    //Räknar raderna
+    // Räknar raderna
     public void countRows(String line) {
         if (isNotStop(line)) {
-            //Ökar raderna med 1
+            // Ökar raderna med 1
             numberRows = numberRows + 1;
         }
     }
 
-    //Hämta antalet rader
+    // Hämta antalet rader
     public int getRows() {
         return numberRows;
     }
 
-    //Räknar tecken
+    // Räknar tecken
     public void countCharacters(String line) {
         if (isNotStop(line)) {
-            //adera incrementa soma o comprimento da linha (numero de caracteres)
+            // Ökar radens längd (antal tecken)
             numberCharacters = numberCharacters + line.length();
         }
     }
 
-    //Hämta antalet tecken
+    // Hämta antalet tecken
     public int getCharacters() {
         return numberCharacters;
     }
 
-    //Räknar ord
+    // Räknar ord
     public void countWords(String line) {
-        //Kolla se a linha nao eh vazia - linhas vazias contam palavras erroneamente
+        // Kollar om raden inte är tom (tomma rader räknar ord felaktigt)
         if (isNotStop(line) && !line.isEmpty()) {
-            //Anropa Strip para remover os espacos a esquerda
-            // em seguida divide a linha em palavras separadas por espacos
-            //Resultado eh uma Array de Strings contendo as palavras
+            // Anropar Strip för att ta bort mellanslag till vänster
+            // Och delar sedan upp raden i ord separerade av mellanslag
+            // Resultatet är en Array av Strings som innehåller orden
             String[] words = line.strip().split(" ");
-            //incrementa a quantidade de palavras
+            // Ökar antalet ord
             numberWords = numberWords + words.length;
         }
     }
 
-    //Hämta antalet ord
+    // Hämta antalet ord
     public int getWords() {
         return numberWords;
     }
@@ -74,15 +74,15 @@ public class TextAnalyser {
     //Längsta ordet
     public void checkLongestWord(String line) {
         if (isNotStop(line)) {
-            //divide a linha em palavras separadas por espacos
-            //Resultado eh um Array de Strings contendo as palavras
+            // Delar raden i ord separerade av mellanslag
+            // Resultatet är en Array av Strings som innehåller orden
             String[] words = line.split(" ");
 
-            int length = words.length; //quantidade de palavras
+            int length = words.length; // Antal ord
             for (int i = 0; i < length; i++) {
 
-                // Se a palavra do indice i for maior que a maior palavra atual
-                // substitui a existente
+                // Om ordet vid index i är längre än det nuvarande längsta ordet
+                // Ersätt det existerande
                 if (words[i].length() > longestWord.length()) {
                     longestWord = words[i];
                 }
@@ -90,7 +90,7 @@ public class TextAnalyser {
         }
     }
 
-    // Hämta länsta ord
+    // Hämta längsta ord
     public String getLongestWord() {
         return longestWord;
     }

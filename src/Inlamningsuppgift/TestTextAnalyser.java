@@ -6,83 +6,104 @@ import static org.junit.Assert.assertEquals;
 
 public class TestTextAnalyser {
 
-    //Test av båda möjligheterna i Stop-metoden
+    // Test av båda möjligheterna i Stop-metoden
     @Test
     public void testStop() {
 
-        //Arrange
+        // Arrange
         TextAnalyser analyser = new TextAnalyser();
-        boolean expectedStop = false; //Falso significa que o texto eh stop
+        boolean expectedStop = false; // False betyder att texten är "Stop"
         boolean expectedNoStop = true;
-        //Act
-        boolean actualStop = analyser.isNotStop("stop");
+        // Act
+        boolean actualStop = analyser.isNotStop("Stop");
         boolean actualNoStop = analyser.isNotStop("Hej");
-        //Assert
+        // Assert
         assertEquals(expectedStop, actualStop);
         assertEquals(expectedNoStop, actualNoStop);
     }
 
-    //Test för att räkna antalet rader
+    // Test för att räkna antalet rader
     @Test
     public void testCountRows() {
 
-        //Arrange
+        // Arrange
         TextAnalyser analyser = new TextAnalyser();
         int expected = 3;
 
-        //Act
+        // Act
         analyser.countRows("Hej");
         analyser.countRows("Godmorgon");
         analyser.countRows("Hejdå");
         analyser.countRows("stop");
         int actual = analyser.getRows();
 
-        //Assert
+        // Assert
         assertEquals(expected, actual);
     }
-    //Test för att räkna antalet tecken
+
+    // Test för att räkna antalet tecken
     @Test
     public void testCountCharacters() {
 
-        //Arrange
+        // Arrange
         TextAnalyser analyser = new TextAnalyser();
         int expected = 8;
 
-        //Act
+        // Act
         analyser.countCharacters("Hej");
         analyser.countCharacters("Hejdå");
         analyser.countCharacters("stop");
         int actual = analyser.getCharacters();
 
-        //Assert
+        // Assert
         assertEquals(expected, actual);
     }
 
-    //Test för att räkna antalet ord
+    // Test för att kolla mellanslag i början, mitten och slutet av orden
+    @Test
+    public void testSpaceBetweenWords() {
+
+        // Arrange
+        TextAnalyser analyser = new TextAnalyser();
+
+        int expected = 3;
+
+        // Act
+        analyser.countWords("  Hej hej        ");
+        analyser.countWords(" Hejdå       ");
+        analyser.countWords("stop");
+        int actual = analyser.getWords();
+
+        // Assert
+        assertEquals(expected, actual);
+    }
+
+    // Test för att räkna antalet ord
     @Test
     public void testCountWords() {
-        //Arrange
+        // Arrange
         TextAnalyser analyser = new TextAnalyser();
         int expected = 2;
 
-        //Act
+        // Act
         analyser.countWords("Hej");
         analyser.countWords("Hejdå");
         analyser.countWords("stop");
         int actual = analyser.getWords();
 
-        //Assert
+        // Assert
         assertEquals(expected, actual);
     }
-    //Test för att kolla längsta ord
+
+    // Test för att kolla längsta ord
     @Test
     public void testCheckLongestWord() {
 
-        //Arrange
+        // Arrange
         TextAnalyser analyser = new TextAnalyser();
         String expected = "Godmorgon";
 
-        //Act
+        // Act
         analyser.checkLongestWord("Hej");
         analyser.checkLongestWord("Godmorgon");
         analyser.checkLongestWord("Hejdå");
@@ -90,26 +111,7 @@ public class TestTextAnalyser {
 
         String actual = analyser.getLongestWord();
 
-        //Assert
-        assertEquals(expected, actual);
-    }
-
-    //Test för att kolla vita utrymmen i början, mitten och slutet av ord
-    @Test
-    public void testSpaceBetweenWords() {
-
-        //Arrange
-        TextAnalyser analyser = new TextAnalyser();
-
-        int expected = 3;
-
-        //Act
-        analyser.countWords("  Hej hej        ");
-        analyser.countWords(" Hejdå       ");
-        analyser.countWords("stop");
-        int actual = analyser.getWords();
-
-        //Assert
+        // Assert
         assertEquals(expected, actual);
     }
 }
