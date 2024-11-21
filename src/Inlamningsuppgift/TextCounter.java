@@ -4,40 +4,36 @@ import java.util.Scanner;
 
 public class TextCounter {
     public static void main(String[] args) {
-        Scanner scan = new Scanner(System.in);
-
-        //Objeto - Instanciando a classe logica
+        //Objekt
         TextAnalyser analyser = new TextAnalyser();
 
-        String text = "";
+        //Läs in en text
+        Scanner scan = new Scanner(System.in);
+        String text = ""; //usado para armazenar o texto do usuario
 
+        //Loop de controle - sai quando o usuario escreve stop
+        //chama o metodo nao stop do objeto analyser - text eh o parametro
         while (analyser.isNotStop(text)) {
             System.out.println("Skriv en mening eller skriv 'stop' för att avsluta: ");
-            text = scan.nextLine();
+            text = scan.nextLine(); //atribui o proximo texto digitado pele usuario - hamta
 
-
-            //Bearbeta linjen
-            //Nome do objeto. metodo - escreve e enter
-            analyser.countLine(text);
+            //Bearbeta texten - Processa o texto do usuario
+            analyser.countRows(text);
             analyser.countCharacters(text);
-            analyser.countWord(text);
+            analyser.countWords(text);
             analyser.checkLongestWord(text);
-
         }
 
-        //Skriver ut hur många rader - Imprimir quantas linhas
-        System.out.println("Antalet rader: " + analyser.getLines());
+        //Skriver ut hur många rader
+        System.out.println("Antalet rader är: " + analyser.getRows());
 
-        //Skriver ut antal tecken - Imprimir numero de caracteres
-        System.out.println("Antalet tecken: " + analyser.getCharacters());
+        //Skriver ut antal tecken
+        System.out.println("Antalet tecken är: " + analyser.getCharacters());
 
+        //Skriver ut antalet ord
+        System.out.println("Antalet ord är: " + analyser.getWords());
 
-        //Skriver ut antalet ord - Imprimir numero de palavras
-        System.out.println("Antalet ord: " + analyser.getWord());
-
-        //Skriver ut länsta ordet - Imprimir palavra mais longa
-        System.out.println("Antalet länsta ord: " + analyser.getLongestWord());
+        //Skriver ut längsta ordet
+        System.out.println("Längsta ord är: " + analyser.getLongestWord());
     }
-
-
 }

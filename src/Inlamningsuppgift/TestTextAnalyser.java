@@ -4,9 +4,9 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.Assert.assertEquals;
 
-public class TestClass {
+public class TestTextAnalyser {
 
-    //Teste para testar o metodo nas suas duas possibilidades
+    //Test av båda möjligheterna i Stop-metoden
     @Test
     public void testStop() {
 
@@ -20,29 +20,27 @@ public class TestClass {
         //Assert
         assertEquals(expectedStop, actualStop);
         assertEquals(expectedNoStop, actualNoStop);
-
     }
 
-    //Teste para contar o numero de linhas
+    //Test för att räkna antalet rader
     @Test
-    public void testCountLines() {
+    public void testCountRows() {
 
         //Arrange
         TextAnalyser analyser = new TextAnalyser();
         int expected = 3;
 
         //Act
-        analyser.countLine("Hej");
-        analyser.countLine("Godmorgon");
-        analyser.countLine("Hejdå");
-        analyser.countLine("stop");
-        int actual = analyser.getLines();
+        analyser.countRows("Hej");
+        analyser.countRows("Godmorgon");
+        analyser.countRows("Hejdå");
+        analyser.countRows("stop");
+        int actual = analyser.getRows();
 
         //Assert
         assertEquals(expected, actual);
-
     }
-
+    //Test för att räkna antalet tecken
     @Test
     public void testCountCharacters() {
 
@@ -58,26 +56,25 @@ public class TestClass {
 
         //Assert
         assertEquals(expected, actual);
-
     }
 
+    //Test för att räkna antalet ord
     @Test
-    public void testCountWord() {
+    public void testCountWords() {
         //Arrange
         TextAnalyser analyser = new TextAnalyser();
         int expected = 2;
 
         //Act
-        analyser.countWord("Hej");
-        analyser.countWord("Hejdå");
-        analyser.countWord("stop");
-        int actual = analyser.getWord();
+        analyser.countWords("Hej");
+        analyser.countWords("Hejdå");
+        analyser.countWords("stop");
+        int actual = analyser.getWords();
 
         //Assert
         assertEquals(expected, actual);
-
     }
-
+    //Test för att kolla längsta ord
     @Test
     public void testCheckLongestWord() {
 
@@ -95,9 +92,9 @@ public class TestClass {
 
         //Assert
         assertEquals(expected, actual);
-
     }
 
+    //Test för att kolla vita utrymmen i början, mitten och slutet av ord
     @Test
     public void testSpaceBetweenWords() {
 
@@ -107,15 +104,12 @@ public class TestClass {
         int expected = 3;
 
         //Act
-        analyser.countWord("  Hej hej        ");
-        analyser.countWord(" Hejdå       ");
-        analyser.countWord("stop");
-        int actual = analyser.getWord();
+        analyser.countWords("  Hej hej        ");
+        analyser.countWords(" Hejdå       ");
+        analyser.countWords("stop");
+        int actual = analyser.getWords();
 
         //Assert
         assertEquals(expected, actual);
-
     }
-
-
 }
