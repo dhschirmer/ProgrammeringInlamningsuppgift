@@ -10,7 +10,7 @@ public class TextAnalyser {
 
     // Konstruktor
     public TextAnalyser() {
-        //Initierar attributen med standardvärden
+        // Initierar attributen med standardvärden
         numberRows = 0;
         numberCharacters = 0;
         numberWords = 0;
@@ -61,8 +61,15 @@ public class TextAnalyser {
             // Och delar sedan upp raden i ord separerade av mellanslag
             // Resultatet är en Array av Strings som innehåller orden
             String[] words = line.strip().split(" ");
-            // Ökar antalet ord
-            numberWords = numberWords + words.length;
+
+            int length = words.length; // Antal ord
+            for (int i = 0; i < length; i++) {
+                // Test alla ord. Om det är tom, räknas inte
+                if (!words[i].isEmpty()) {
+                    // Ökar antalet ord
+                    numberWords = numberWords + 1;
+                }
+            }
         }
     }
 

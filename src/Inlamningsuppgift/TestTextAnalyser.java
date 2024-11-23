@@ -59,7 +59,7 @@ public class TestTextAnalyser {
         assertEquals(expected, actual);
     }
 
-    // Test för att kolla mellanslag i början, mitten och slutet av orden
+    // Test för att kolla mellanslag i början och slutet av orden
     @Test
     public void testSpaceBetweenWords() {
 
@@ -69,8 +69,8 @@ public class TestTextAnalyser {
         int expected = 3;
 
         // Act
-        analyser.countWords("  Hej hej        ");
-        analyser.countWords(" Hejdå       ");
+        analyser.countWords("     Hej      hej        ");
+        analyser.countWords(" Hejdå         ");
         analyser.countWords("stop");
         int actual = analyser.getWords();
 
